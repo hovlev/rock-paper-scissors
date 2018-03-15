@@ -1,0 +1,26 @@
+.board {
+  min-height: 100vh;
+}
+
+.team-one {
+  background: #F00;
+}
+
+.team-two {
+  background: #00F;
+}
+
+.side {
+  width: 50%;
+  float: left;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  opacity: 0.5;
+}
+
+.button:hover {
+  opacity: 1;
+}
