@@ -18,12 +18,12 @@ const setWinner = results =>
 const calculateResult = payload => {
   const results = [
     {
-      team: 'red',
-      throw: payload,
+      team: 'player',
+      throw: payload
     },
     {
-      team: 'blue',
-      throw: hands[getRandomHandIndex()].type,
+      team: 'cpu',
+      throw: hands[getRandomHandIndex()].type
     },
   ];
   return setWinner(results);
