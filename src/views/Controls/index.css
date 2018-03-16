@@ -1,13 +1,18 @@
 .board {
-  min-height: 100vh;
+  box-sizing: border-box;
 }
 
-.team-one {
-  background: #F00;
+.results {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
-.team-two {
-  background: #00F;
+.result {
+  flex: 0 0 auto;
+}
+
+.won {
+  background: #0F0;
 }
 
 .side {
@@ -23,4 +28,8 @@
 
 .button:hover {
   opacity: 1;
+}
+
+.player-title {
+  text-align: center;
 }
