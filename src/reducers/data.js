@@ -18,14 +18,10 @@ const appendGame = (state, payload) => {
 const countScore = games =>
   length(filter(game => prop('won', game), games));
 
-const getScores = games => {
-  const player = countScore(map(game => head(game), games));
-  const cpu = countScore(map(game => last(game), games));
-  return {
-    player,
-    cpu,
-  };
-};
+const getScores = games => ({
+  player: countScore(map(game => head(game), games)),
+  cpu: countScore(map(game => last(game), games)),
+});
 
 const throwCompleted = (state, payload) => {
   const updatedGames = appendGame(state, payload);
