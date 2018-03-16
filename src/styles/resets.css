@@ -18,7 +18,7 @@ body {
   font: var(--base-size) var(--font-stack);
   line-height: 1;
   margin: 0;
-  min-width: 600px;
+  min-width: 300px;
   padding: 0;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
