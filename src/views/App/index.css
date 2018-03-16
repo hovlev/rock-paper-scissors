@@ -1,9 +1,10 @@
-.title {
-  position: absolute;
-  border-width: 0 1px 1px 0;
-  border-color: #000;
-  border-style: solid;
-  padding: 0.2rem;
+.title, .subtitle {
+  border-bottom: 1px solid #000;
   margin: 0;
-  text-transform: lowercase;
+  padding: 1rem;
+  text-align: center;
+}
+
+.subtitle {
+  border: none;
 }
