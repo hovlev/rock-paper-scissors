@@ -12,34 +12,43 @@ const Control = ({ name, onClick }) => (
     <Icon name={name} />
   </button>);
 
-const PreviousGame = ({ game }) => (
-  <div>{`${game[0].throw} ${game[1].throw}`}</div>
+const PreviousGame = ({ result }) => (
+  <li className={[result.won && styles.won, styles.result].join(' ')}>
+    <Icon name={result.throw} />
+  </li>
 );
 
-const Controls = ({ games, hands, throwHand }) => console.log(games) || (
-  <ul className={styles.board}>
-    <li className="current-game">
-      <div className={[styles['team-one'], styles.side].join(' ')}>
-        {hands.map(hand => (
-          <Control name={hand.type} onClick={throwHand} />
-        ))}
-      </div>
-      <div className={[styles['team-two'], styles.side].join(' ')}>
-        {hands.map(hand => (
-          <Icon name={hand.type} />
-        ))}
-      </div>
+const Controls = ({ games, hands, scores, throwHand }) => [
+  <ul>
+    <li>
+      {hands.map(hand => (
+        <Control name={hand.type} onClick={throwHand} />
+      ))}
     </li>
-    {games.map(game => (
-      <PreviousGame game={game} />
-    ))}
-  </ul>
-);
+  </ul>,
+  <div className={[styles.side, styles.board, styles['team-one']].join(' ')}>
+    <h2 className={styles['player-title']}>Player ({scores.player})</h2>
+    <ul className={styles.results}>
+      {games.map(game => (
+        <PreviousGame result={game[0]} />
+      ))}
+    </ul>
+  </div>,
+  <div className={[styles.side, styles.board, styles['team-two']].join(' ')}>
+    <h2 className={styles['player-title']}>CPU ({scores.cpu})</h2>
+    <ul className={styles.results}>
+      {games.map(game => (
+        <PreviousGame result={game[1]} />
+      ))}
+    </ul>
+  </div>,
+];
 
 export default connect(
   state => ({
     games: state.data.games,
     hands: state.data.hands,
+    scores: state.data.scores,
   }),
   dispatch => ({
     throwHand: hand => dispatch({ type: actions.THROW, payload: hand }),
